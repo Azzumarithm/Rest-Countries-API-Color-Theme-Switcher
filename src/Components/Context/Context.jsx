@@ -25,8 +25,22 @@ const Context = ({ children }) => {
 
   const [countries, setCountries] = useState(null);
 
+  const [region, setRegion] = useState(null)
+
+  const [filterCountryResults, setFilterCountryResults] = useState([])
+
+  const [searchCountryResults, setSearchCountryResults] = useState([])
+
+
+  const [dropdownState, setDropDownState] = useState(true)
+  
+  useEffect(() => {
+    setSearchCountryResults(countries)
+  }, [countries])
+  
+
   return (
-    <GlobalContext.Provider value={{URL, isLoading,setIsLoading,isError,setIsError,countries,setCountries}}>
+    <GlobalContext.Provider value={{URL, isLoading,setIsLoading,isError,setIsError,countries,setCountries, searchCountryResults, setSearchCountryResults, filterCountryResults, setFilterCountryResults, dropdownState, setDropDownState, region, setRegion}}>
       {children}
     </GlobalContext.Provider>
 

@@ -19,7 +19,7 @@
   /*Light Theme*/
   --navbar-bg-color: #f8f8f8;
   --navbar-title: black;
-  --home-bg: #f1f7f7;
+  --home-bg: #f3f3f3;
   --search-bg-color: #fcfcfc;
   --filter-region-bg-color: #fffefb;
   --countries-bg-color: #f8f9f9;
@@ -43,7 +43,7 @@
 
 body{
   min-height: 100vh;
-  
+  min-width: 100vh;
 }
 
 ::-webkit-scrollbar{
@@ -52,9 +52,12 @@ body{
 
 .app{
   min-height: 100vh;
+  min-width: 100vh;
   background-color: var(--home-bg);
 
 }
+
+
 
 .navbar{
   display: flex;
@@ -117,46 +120,75 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .filter-title{
-  font-size: 1em;
+  font-size: 1.2em;
   font-family: Nunito Sans,sans-serif;
   font-weight: 600;
 }
 
 .filter-region-container{
-  background-color: var(--filter-region-bg-color);
-  width: 230px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 2px grey;
+  position: relative;
 }
 
 .filter-button{
   display: flex;
-  height: 100%;
   justify-content: space-between;
+  background-color: var(--filter-region-bg-color);
+  width: 230px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px grey;
   align-items: center;
   font-size: 0.8em;
   padding: 15px;
+  font-family: Nunito Sans,sans-serif;
   cursor: pointer;
+  user-select: none;
   
+}
+
+.filter-list{
+  position: absolute;
+  background-color: var(--filter-region-bg-color);
+  box-shadow: 0px 0px 2px grey;
+  bottom: -270px;
+  padding: 20px 0px;
+  border-radius: 5px;
+  width: 230px;
+  font-family: Nunito Sans,sans-serif;
+  transition: 0.1s linear;
+  
+}
+
+
+.country-region-list{
+  list-style: none;
+  padding: 5px 20px;
+  user-select: none;
+  cursor: pointer;
+  font-family: Nunito Sans,sans-serif;
+  font-weight: 600;
+}
+.country-region-list:hover{
+  background-color: rgb(149, 240, 250);
 }
 
 .dropdown-icon{
   width: 0.8em;
+  transition: 0.1s linear;
+  user-select: none;
 }
 
 
 .countries-container{
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  /* grid-template-columns: repeat(4,1fr); */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 50px;
   place-items: center;
-  padding: 0px 65px;
- 
- 
+  padding: 0px 66px;
 }
 
 .country-subcontainer{
-  background-color: #ffffff;
+  background-color: var(--countries-bg-color);
   border-radius: 5px;
   width: 240px;
   height: 260px;

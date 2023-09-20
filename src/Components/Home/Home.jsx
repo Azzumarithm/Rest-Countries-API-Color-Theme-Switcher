@@ -6,11 +6,12 @@ import FilterRegion from './FilterRegion'
 import Countries from './Countries'
 
 const Home = ({URL}) => {
+
   return (
     <div className={`home`}>
         <NavBar/>
         <div className={`search-filter-container`}>
-          <SearchCountry URL={URL}/>
+          <SearchCountry/>
           <FilterRegion URL={URL}/>
         </div>
         <Countries URL={URL}/>

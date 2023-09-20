@@ -1,18 +1,22 @@
 import React from 'react'
 import '../../App.css'
 import '../../../data.json'
-import { useFetchCountries } from '../CustomHook/useFetchCountries'
+import { useFetchCountries } from '../Actions/useFetchCountries'
+import { useGlobalContext } from '../Context/Context'
 
 
 const Countries = ({ URL }) => {
 
-    const { isLoading, isError, countries} = useFetchCountries(URL)
+    const {searchCountryResults,filterCountryResults,region} = useGlobalContext()
+
+    const { isLoading, isError} = useFetchCountries(URL)
 
     if (isLoading) {
 
         return <h2>Loading...</h2>;
 
     }
+    
 
     if (isError) {
 
@@ -20,13 +24,15 @@ const Countries = ({ URL }) => {
 
     }
 
-    // const countryArray = Object.values(countries)
-
-    // console.log(countryArray)
-
     return (
         <div className={'countries-container'}>
-            {countries.map((country) => {
+            {searchCountryResults?.filter((country) => {
+                if (region === null || region === "Worldwide"){
+                    return country
+                }
+
+                return country.region === region
+            }).map((country) => {
                 
                 return (
                     <div key={country.flag} className={`country-subcontainer ${country.name.common}`}>

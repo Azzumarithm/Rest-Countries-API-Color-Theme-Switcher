@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useGlobalContext } from "../Context/Context";
-
+import axios from "axios"
 
 export const useFetchCountries = () => {
 
@@ -12,11 +12,11 @@ export const useFetchCountries = () => {
 
           try {
 
-            const resp = await fetch(URL);
+            const resp = await axios(URL);
 
             // console.log(resp);
 
-            if (!resp.ok) {
+            if (resp.status !== 200) {
 
               setIsError(true);
 
@@ -26,9 +26,11 @@ export const useFetchCountries = () => {
 
             }
 
-            const countries = await resp.json();
+            const countries = await resp.data;
 
             setCountries(countries);
+
+
             console.table(countries)
 
           } catch (error) {
