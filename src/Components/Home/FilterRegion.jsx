@@ -5,7 +5,7 @@ import { useGlobalContext } from '../Context/Context'
 
 const FilterRegion = () => {
 
-  const {setCountries, searchCountryResults, filterCountryResults, setFilterCountryResults, dropdownState, setDropDownState,region, setRegion} = useGlobalContext()
+  const {uRL,setCountries, searchCountryResults, filterCountryResults, setFilterCountryResults, dropdownState, setDropDownState,region, setRegion} = useGlobalContext()
 
   const handleFilterClick = (e) => {
     let target = e.target

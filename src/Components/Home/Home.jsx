@@ -4,17 +4,22 @@ import NavBar from './NavBar'
 import SearchCountry from './SearchCountry'
 import FilterRegion from './FilterRegion'
 import Countries from './Countries'
+import Country from '../Country/Country'
+import { useGlobalContext } from '../Context/Context'
 
-const Home = ({URL}) => {
-
+const Home = () => {
+  
+  const {URL,countryCode, setCountryCode} = useGlobalContext()
   return (
     <div className={`home`}>
         <NavBar/>
         <div className={`search-filter-container`}>
-          <SearchCountry/>
-          <FilterRegion URL={URL}/>
+          {countryCode === null && <SearchCountry/>}
+          {countryCode === null && <FilterRegion />}
         </div>
-        <Countries URL={URL}/>
+        {countryCode === null && <Countries/>}
+        {countryCode !== null && <Country/>}
+        
     </div>
   )
 }

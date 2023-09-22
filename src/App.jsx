@@ -5,12 +5,12 @@ import Country from './Components/Country/Country';
 import Home from './Components/Home/Home';
 
 function App() {
-  const {URL} = useGlobalContext()
+  const {URL,countryCode, setCountryCode} = useGlobalContext()
 
   return (
     <>
       <main className={`app`}>
-        <Home URL={URL}/>
+        <Home/>
       </main>
     </>
   )

@@ -5,9 +5,9 @@ import { useFetchCountries } from '../Actions/useFetchCountries'
 import { useGlobalContext } from '../Context/Context'
 
 
-const Countries = ({ URL }) => {
+const Countries = () => {
 
-    const {searchCountryResults,filterCountryResults,region} = useGlobalContext()
+    const {URL,searchCountryResults,filterCountryResults,region,countryCode, setCountryCode} = useGlobalContext()
 
     const { isLoading, isError} = useFetchCountries(URL)
 
@@ -24,8 +24,18 @@ const Countries = ({ URL }) => {
 
     }
 
+    const handleSelectCountry = (e) => {
+        let target = e.target
+        while (target && !target.classList.contains('country-subcontainer')){
+            target = target.parentElement
+        }
+
+        setCountryCode(target.classList[1])
+
+    }
+
     return (
-        <div className={'countries-container'}>
+        <div className={'countries-container'} onClick={handleSelectCountry}>
             {searchCountryResults?.filter((country) => {
                 if (region === null || region === "Worldwide"){
                     return country
@@ -35,14 +45,14 @@ const Countries = ({ URL }) => {
             }).map((country) => {
                 
                 return (
-                    <div key={country.flag} className={`country-subcontainer ${country.name.common}`}>
-                        <img src={country.flags.png} className={`country-image ${country.name.common}`} alt={`country-image${country.name.common}`} />
+                    <div key={country.flag} className={`country-subcontainer ${country.cca3}`}>
+                        <img src={country.flags.png} className={`country-image ${country.cca3}`} alt={`country-image ${country.cca3}`} />
 
                         <div className="country-descriptions">
                             <h2 className={`country-name`}>{country.name.common}</h2>
 
                             <p className={`country-description country-population`}>
-                                <strong>Population</strong> : {`${country.population}`}
+                                <strong>Population</strong> : {`${country.population.toLocaleString()}`}
                             </p>
                             <p className={`country-description country-region`}>
                                 <strong>Region</strong> : {`${country.region}`}
