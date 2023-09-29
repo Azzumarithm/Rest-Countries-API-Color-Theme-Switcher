@@ -7,16 +7,16 @@ import { useGlobalContext } from '../Context/Context'
 
 const Countries = () => {
 
-    const {URL,searchCountryResults,filterCountryResults,region,countryCode, setCountryCode} = useGlobalContext()
+    const { URL, searchCountryResults, region, countryCode, setCountryCode, countriesLimit, filterCountryResults, setFilterCountryResults } = useGlobalContext()
 
-    const { isLoading, isError} = useFetchCountries(URL)
+    const { isLoading, isError } = useFetchCountries(URL)
 
     if (isLoading) {
 
         return <h2>Loading...</h2>;
 
     }
-    
+
 
     if (isError) {
 
@@ -26,7 +26,7 @@ const Countries = () => {
 
     const handleSelectCountry = (e) => {
         let target = e.target
-        while (target && !target.classList.contains('country-subcontainer')){
+        while (target && !target.classList.contains('country-subcontainer')) {
             target = target.parentElement
         }
 
@@ -34,16 +34,16 @@ const Countries = () => {
 
     }
 
+
     return (
         <div className={'countries-container'} onClick={handleSelectCountry}>
             {searchCountryResults?.filter((country) => {
-                if (region === null || region === "Worldwide"){
+                if (region === null || region === "All"){
                     return country
                 }
 
                 return country.region === region
-            }).map((country) => {
-                
+            }).slice(0,countriesLimit).map((country) => {
                 return (
                     <div key={country.flag} className={`country-subcontainer ${country.cca3}`}>
                         <img src={country.flags.png} className={`country-image ${country.cca3}`} alt={`country-image ${country.cca3}`} />

@@ -3,6 +3,7 @@ import '../../App.css'
 import dropdownicon from '../../assets/images/dropdown-icon.png'
 import { useGlobalContext } from '../Context/Context'
 
+
 const FilterRegion = () => {
 
   const {uRL,setCountries, searchCountryResults, filterCountryResults, setFilterCountryResults, dropdownState, setDropDownState,region, setRegion} = useGlobalContext()
@@ -52,13 +53,13 @@ const FilterRegion = () => {
       </div>
       <div className={'filter-list'} style={dropdownState ? {display:'none'} : {}} onClick={handleFilterRegion}>
         <ul>
+          <li className={`country-region-list`} style={region === "All" ? filterListStyles : {}}>All</li>
           <li className={`country-region-list`} style={region === "Africa" ? filterListStyles : {}}>Africa</li>
           <li className={`country-region-list`} style={region === "Americas" ? filterListStyles : {}}>Americas</li>
           <li className={`country-region-list`} style={region === "Antarctic" ? filterListStyles : {}}>Antarctic</li>
           <li className={`country-region-list`} style={region === "Asia" ? filterListStyles : {}}>Asia</li>
           <li className={`country-region-list`} style={region === "Europe" ? filterListStyles : {}}>Europe</li>
           <li className={`country-region-list`} style={region === "Oceania" ? filterListStyles : {}}>Oceania</li>
-          <li className={`country-region-list`} style={region === "Worldwide" ? filterListStyles : {}}>Worldwide</li>
         </ul>
       </div>
     </div>

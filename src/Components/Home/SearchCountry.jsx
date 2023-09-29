@@ -15,6 +15,8 @@ const SearchCountry = () => {
       return country.name.common.toLowerCase().includes(e.target.value) || country.name.common.includes(e.target.value) || country.name.common.toUpperCase().includes(e.target.value)
       
     })
+
+    
    
     console.log(countryResultsArray)
     setSearchCountryResults(countryResultsArray)
