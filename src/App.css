@@ -15,6 +15,8 @@
   box-sizing: border-box;
 }
 
+
+
 :root {
   /*Light Theme*/
   --navbar-bg-color: #f8f8f8;
@@ -25,7 +27,7 @@
   --countries-bg-color: #f8f9f9;
   --back-btn-color: #f7f7f8;
   --back-btn-shadow: #dbdbdc;
-
+  --back-to-top-color:#fcfcfc;
 }
 
 .darkmode{
@@ -300,4 +302,23 @@ input[type="search"]::-webkit-search-cancel-button {
   background-color: var(--back-btn-color);
   box-shadow: 0px 0px 2px grey;
   cursor: pointer;
+}
+
+.back-to-up-btn-img{
+  width: 20px;
+}
+
+.back-to-up-btn{
+  border-radius: 100%;
+  width: 50px;
+  position: fixed;
+  bottom: 30px;
+  left: 12px;
+  height: 50px;
+  cursor: pointer;
+  outline: none;
+  border-style: none;
+  border: 1px solid black;
+  background-color: var(--back-to-top-color);
+
 }

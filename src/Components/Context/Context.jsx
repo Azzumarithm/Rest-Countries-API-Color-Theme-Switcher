@@ -36,20 +36,20 @@ const Context = ({ children }) => {
   const [dropdownState, setDropDownState] = useState(true)
 
   const [countryCode, setCountryCode] = useState(null)
-  
+
   useEffect(() => {
     setSearchCountryResults(countries)
   }, [countries])
-  
+
 
   useEffect(() => {
 
     const filterResults = () => {
       if (region === null || region === 'All') {
-        
+
         setFilterCountryResults(searchCountryResults);
       } else {
-        
+
         const filteredResults = searchCountryResults.filter(
           (country) => country.region === region
         );
@@ -57,12 +57,26 @@ const Context = ({ children }) => {
       }
     };
 
-    
+
     filterResults();
   }, [region, searchCountryResults, setFilterCountryResults]);
 
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        setIsVisible(true)
+      } else {
+        setIsVisible(false)
+      }
+    })
+  }, []);
+
+  
+
   return (
-    <GlobalContext.Provider value={{URL, isLoading,setIsLoading,isError,setIsError,countries,setCountries, searchCountryResults, setSearchCountryResults, filterCountryResults, setFilterCountryResults, dropdownState, setDropDownState, region, setRegion,countryCode, setCountryCode,countriesLimit, setCountriesLimit}}>
+    <GlobalContext.Provider value={{ URL, isLoading, setIsLoading, isError, setIsError, countries, setCountries, searchCountryResults, setSearchCountryResults, filterCountryResults, setFilterCountryResults, dropdownState, setDropDownState, region, setRegion, countryCode, setCountryCode, countriesLimit, setCountriesLimit,isVisible}}>
       {children}
     </GlobalContext.Provider>
 

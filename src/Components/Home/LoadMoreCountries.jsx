@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useGlobalContext } from '../Context/Context'
+import '../../App.css'
 
 
 const LoadMoreCountries = () => {
