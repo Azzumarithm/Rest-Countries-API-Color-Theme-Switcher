@@ -29,7 +29,7 @@ const Home = () => {
       {countryCode === null && (countriesLimit < filterCountryResults?.length) && <LoadMoreCountries />}
 
       <div className="back-to-position-btn-container">
-        {isVisible && <BackToUpBtn />}
+        {isVisible && countryCode === null && <BackToUpBtn />}
       
       </div>
     </div>

@@ -27,10 +27,10 @@
   --countries-bg-color: #f8f9f9;
   --back-btn-color: #f7f7f8;
   --back-btn-shadow: #dbdbdc;
-  --back-to-top-color:#fcfcfc;
+  --back-to-top-color: #fcfcfc;
 }
 
-.darkmode{
+.darkmode {
   /*Dark Theme*/
   --navbar-bg-color: #2b3743;
   --navbar-title: #e2ebf2;
@@ -43,16 +43,16 @@
 
 }
 
-body{
+body {
   min-height: 100vh;
   min-width: 100vh;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   display: none;
 }
 
-.app{
+.app {
   min-height: 100vh;
   min-width: 100vh;
   background-color: var(--home-bg);
@@ -61,7 +61,7 @@ body{
 
 
 
-.navbar{
+.navbar {
   display: flex;
   justify-content: space-between;
   padding: 20px 45px;
@@ -69,24 +69,24 @@ body{
   box-shadow: 0px 1px 4px rgba(128, 128, 128, 0.667);
 }
 
-.navbar-title{
+.navbar-title {
   font-size: 1.3rem;
-  font-family: Nunito Sans,sans-serif;
+  font-family: Nunito Sans, sans-serif;
   color: var(--navbar-title);
 }
 
-.theme{
+.theme {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
 }
 
-.theme-icon{
+.theme-icon {
   width: 1em;
 }
 
-.theme-btn{
+.theme-btn {
   border-style: none;
   font-size: 1em;
   outline: none;
@@ -94,7 +94,7 @@ body{
   cursor: pointer;
 }
 
-.search-filter-container{
+.search-filter-container {
   display: flex;
   justify-content: space-between;
   padding: 40px 70px;
@@ -102,7 +102,7 @@ body{
 
 
 
-.search-input{
+.search-input {
   outline: none;
   border-style: none;
   background-image: url('./assets/images/search-outline.svg');
@@ -121,17 +121,17 @@ input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
 
-.filter-title{
+.filter-title {
   font-size: 1.2em;
-  font-family: Nunito Sans,sans-serif;
+  font-family: Nunito Sans, sans-serif;
   font-weight: 600;
 }
 
-.filter-region-container{
+.filter-region-container {
   position: relative;
 }
 
-.filter-button{
+.filter-button {
   display: flex;
   justify-content: space-between;
   background-color: var(--filter-region-bg-color);
@@ -141,13 +141,13 @@ input[type="search"]::-webkit-search-cancel-button {
   align-items: center;
   font-size: 0.8em;
   padding: 15px;
-  font-family: Nunito Sans,sans-serif;
+  font-family: Nunito Sans, sans-serif;
   cursor: pointer;
   user-select: none;
-  
+
 }
 
-.filter-list{
+.filter-list {
   position: absolute;
   background-color: var(--filter-region-bg-color);
   box-shadow: 0px 0px 2px grey;
@@ -155,32 +155,33 @@ input[type="search"]::-webkit-search-cancel-button {
   padding: 20px 0px;
   border-radius: 5px;
   width: 230px;
-  font-family: Nunito Sans,sans-serif;
+  font-family: Nunito Sans, sans-serif;
   transition: 0.1s linear;
-  
+
 }
 
 
-.country-region-list{
+.country-region-list {
   list-style: none;
   padding: 5px 20px;
   user-select: none;
   cursor: pointer;
-  font-family: Nunito Sans,sans-serif;
+  font-family: Nunito Sans, sans-serif;
   font-weight: 600;
 }
-.country-region-list:hover{
+
+.country-region-list:hover {
   background-color: rgb(149, 240, 250);
 }
 
-.dropdown-icon{
+.dropdown-icon {
   width: 0.8em;
   transition: 0.1s linear;
   user-select: none;
 }
 
 
-.countries-container{
+.countries-container {
   display: grid;
   /* grid-template-columns: repeat(4,1fr); */
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -189,7 +190,7 @@ input[type="search"]::-webkit-search-cancel-button {
   padding: 0px 66px 20px 66px;
 }
 
-.country-subcontainer{
+.country-subcontainer {
   background-color: var(--countries-bg-color);
   border-radius: 5px;
   width: 240px;
@@ -198,41 +199,44 @@ input[type="search"]::-webkit-search-cancel-button {
 
 }
 
-.country-image{
+.country-image {
   width: 240px;
   height: 130px;
   border-radius: 5px 5px 0px 0px;
 }
 
-.country-descriptions{
+.country-descriptions {
   padding: 10px 15px 15px 15px;
 }
 
-.country-name{
+.country-name {
   font-size: 1em;
-  font-family: Nunito Sans,sans-serif;
+  font-family: Nunito Sans, sans-serif;
   font-weight: 700;
   margin-bottom: 10px;
 }
-.country-description{
+
+.country-description {
   font-size: 0.8em;
-  font-family: Nunito Sans,sans-serif;
+  font-family: Nunito Sans, sans-serif;
 }
 
 /* Country Style */
 
-.country-page-container{
+.country-page-container {
   padding: 40px 40px;
-  font-family: Nunito Sans,sans-serif;
+  font-family: Nunito Sans, sans-serif;
 
 
 }
-.country-page-subcontainer{
+
+.country-page-subcontainer {
   display: flex;
   gap: 90px;
   padding: 50px 0px 0px 0px;
 }
-.back-btn{
+
+.back-btn {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -244,43 +248,43 @@ input[type="search"]::-webkit-search-cancel-button {
   box-shadow: 0px 0px 2px grey;
 }
 
-.back-icon{
+.back-icon {
   width: 20px;
 }
 
-.country-page-image{
+.country-page-image {
   width: 400px;
   height: 230px;
 }
 
-.country-page-description-subcontainer{
+.country-page-description-subcontainer {
   display: flex;
   gap: 50px;
-  
+
 }
 
-.country-page-description{
+.country-page-description {
   word-break: break-all;
   margin-bottom: 5px;
 }
 
-.country-desc{
+.country-desc {
   width: 300px;
 }
 
-.border-countries-container{
+.border-countries-container {
   display: flex;
   gap: 20px;
   margin-top: 40px;
 }
 
-.country-border-btn-container{
+.country-border-btn-container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.country-border-btn{
+.country-border-btn {
   width: 80px;
   height: 20px;
   cursor: pointer;
@@ -289,13 +293,13 @@ input[type="search"]::-webkit-search-cancel-button {
   box-shadow: 0px 0px 2px grey;
 }
 
-.loadmorecountries-container{
+.loadmorecountries-container {
   display: flex;
   justify-content: center;
   padding: 40px;
 }
 
-.loadmorecountries-btn{
+.loadmorecountries-btn {
   border-style: none;
   height: 30px;
   width: 100px;
@@ -304,11 +308,11 @@ input[type="search"]::-webkit-search-cancel-button {
   cursor: pointer;
 }
 
-.back-to-up-btn-img{
+.back-to-up-btn-img {
   width: 20px;
 }
 
-.back-to-up-btn{
+.back-to-up-btn {
   border-radius: 100%;
   width: 50px;
   position: fixed;
@@ -321,4 +325,15 @@ input[type="search"]::-webkit-search-cancel-button {
   border: 1px solid black;
   background-color: var(--back-to-top-color);
 
+}
+
+.leaflet-container {
+ 
+  margin-top: 50px;
+  width: 100%;
+
+  height: 500px;
+
+  border-radius: 10px;
+  border: 1px solid black;
 }
