@@ -8,7 +8,7 @@ import axios from "axios"
 const apiToken = import.meta.env.VITE_REACT_MAP_TOKEN
 
 const Country = () => {
-  const { countryCode, setCountryCode, countries, setCountries, region, coordinates, setCoordinates } = useGlobalContext()
+  const { countryCode, setCountryCode, countries, setCountries, region, coordinates, setCoordinates,countryShortCode, setCountryShortCode } = useGlobalContext()
   const [latitude, longitude] = coordinates
   
   const handleBackToHome = (e) => {
@@ -17,8 +17,12 @@ const Country = () => {
   console.log(latitude)
   const handleBordersClick = (e) => {
     let target = e.target
+    while (target && !target.classList.contains('country-border-btn')) {
+      target = target.parentElement
+    }
 
     setCountryCode(e.target.textContent)
+    setCountryShortCode(target.classList[1])
   }
 
   useEffect(() => {
@@ -29,11 +33,18 @@ const Country = () => {
         );
 
         const data = response.data;
-        const [longitude, latitude] = data.features[0].center;
         console.log(data)
-        setCoordinates((prevCoordinates) => {
-          return [latitude, longitude];
-        });
+        const countriesData = data.features
+        for (let countryData of countriesData){
+          let apiShortCode = countryData["properties"]["short_code"]
+          if (apiShortCode === countryShortCode.toLowerCase()){
+            let [longitude, latitude] = countryData.center;
+
+            setCoordinates([latitude, longitude]);
+            console.log({latitude, longitude})
+
+          }
+        }
 
       } catch (error) {
         console.error('Error geocoding country:', error)
@@ -42,6 +53,7 @@ const Country = () => {
     geoCodeCountry()
   }, [countryCode])
 
+  
   return (
     <>
 
@@ -55,6 +67,17 @@ const Country = () => {
 
             const keys = Object.keys(country.name.nativeName || {})
             const bordersArray = country.borders
+
+            const newBordersArray = bordersArray.map((border) => {
+
+              const matchingCountry = countries.find((country) => country.cca3 === border);
+              if (matchingCountry) {
+                return [border, matchingCountry.cca2];
+              }
+            })
+
+            console.log(newBordersArray)
+            
             return (
               <>
                 <div key={country.cca3} className={`country-page-subcontainer ${country.cca3}`}>
@@ -89,9 +112,9 @@ const Country = () => {
                     {bordersArray && <div className="border-countries-container">
                       <p><strong>Border Countries:</strong></p>
                       <div className="country-border-btn-container">
-                        {bordersArray?.map((border) => {
+                        {newBordersArray?.map((border) => {
                           return (
-                            <button key={border} className="country-border-btn" onClick={handleBordersClick}>{border}</button>
+                            <button key={border[0]} className={`country-border-btn ${border[1]}`} onClick={handleBordersClick}>{border[0]}</button>
                           )
                         })}
                       </div>

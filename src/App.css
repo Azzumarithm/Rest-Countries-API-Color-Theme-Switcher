@@ -28,6 +28,11 @@
   --back-btn-color: #f7f7f8;
   --back-btn-shadow: #dbdbdc;
   --back-to-top-color: #fcfcfc;
+  --text-color:black;
+  --background-skeleton-color:#bab8b8;
+  --shimmer-bg-color: rgba(255, 255, 255, 0.304);
+  --shimmer-box-shadow: rgba(255, 255, 255, 0.151);
+
 }
 
 .darkmode {
@@ -40,12 +45,16 @@
   --countries-bg-color: #2b3743;
   --back-btn-color: #2b3743;
   --back-btn-shadow: #1b2733;
-
+  --text-color:white;
+  --background-skeleton-color: #ddd;
+  --shimmer-bg-color: rgba(255,255,255,0.1);
+  --shimmer-box-shadow: rgba(255,255,255,0.05);
 }
 
 body {
   min-height: 100vh;
   min-width: 100vh;
+  color: var(--text-color);
 }
 
 ::-webkit-scrollbar {
@@ -92,6 +101,7 @@ body {
   outline: none;
   background-color: var(--navbar-bg-color);
   cursor: pointer;
+  color: var(--text-color);
 }
 
 .search-filter-container {
@@ -196,7 +206,7 @@ input[type="search"]::-webkit-search-cancel-button {
   width: 240px;
   height: 260px;
   cursor: pointer;
-
+ 
 }
 
 .country-image {
@@ -336,4 +346,58 @@ input[type="search"]::-webkit-search-cancel-button {
 
   border-radius: 10px;
   border: 1px solid black;
+}
+
+.skeleton-wrapper{
+  overflow: hidden;
+}
+.skeleton{
+  background: var(--background-skeleton-color);
+}
+
+.skeleton.text{
+  width: 70%;
+  height: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.skeleton.country-name{
+  width: 50%;
+  height: 20px;
+  border-radius: 5px;
+  margin-bottom: 17px;
+  
+}
+
+.skeleton.country-image{
+  width: 240px;
+  height: 130px;
+  border-radius: 5px 5px 0px 0px;
+  margin-bottom: 7px;
+}
+
+/* animation effect */
+
+.shimmer-wrapper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: loading 2.5s infinite;
+}
+
+.shimmer{
+  width: 50%;
+  height: 100%;
+  background: var(--shimmer-bg-color);
+  transform: skewX(-20deg);
+  box-shadow: 0 0 30px 30px var(--shimmer-box-shadow);
+}
+
+@keyframes loading {
+  0% {transform: translateX(-150%);}
+  50% {transform: translateX(-60%);}
+  100% {transform: translateX(150%);}
 }

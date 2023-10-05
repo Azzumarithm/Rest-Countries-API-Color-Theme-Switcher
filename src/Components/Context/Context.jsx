@@ -37,7 +37,13 @@ const Context = ({ children }) => {
 
   const [countryCode, setCountryCode] = useState(null)
 
+  const [countryShortCode, setCountryShortCode] = useState(null)
+
   const [coordinates, setCoordinates] = useState([0,0])
+
+  let themeLocalStorage = localStorage.getItem('themeLocalStorage');
+
+  const [theme, setTheme] = useState(themeLocalStorage)
 
   useEffect(() => {
     setSearchCountryResults(countries)
@@ -78,7 +84,7 @@ const Context = ({ children }) => {
   
 
   return (
-    <GlobalContext.Provider value={{ URL, isLoading, setIsLoading, isError, setIsError, countries, setCountries, searchCountryResults, setSearchCountryResults, filterCountryResults, setFilterCountryResults, dropdownState, setDropDownState, region, setRegion, countryCode, setCountryCode, countriesLimit, setCountriesLimit,isVisible,coordinates, setCoordinates}}>
+    <GlobalContext.Provider value={{ URL, isLoading, setIsLoading, isError, setIsError, countries, setCountries, searchCountryResults, setSearchCountryResults, filterCountryResults, setFilterCountryResults, dropdownState, setDropDownState, region, setRegion, countryCode, setCountryCode, countriesLimit, setCountriesLimit,isVisible,coordinates, setCoordinates,theme, setTheme,themeLocalStorage,countryShortCode, setCountryShortCode}}>
       {children}
     </GlobalContext.Provider>
 
