@@ -14,7 +14,7 @@ const Country = () => {
   const handleBackToHome = (e) => {
     setCountryCode(null)
   }
-  console.log(latitude)
+  
   const handleBordersClick = (e) => {
     let target = e.target
     while (target && !target.classList.contains('country-border-btn')) {
@@ -37,7 +37,7 @@ const Country = () => {
         const countriesData = data.features
         for (let countryData of countriesData){
           let apiShortCode = countryData["properties"]["short_code"]
-          if (apiShortCode === countryShortCode.toLowerCase()){
+          if (apiShortCode === countryShortCode.toLowerCase() || countryData["Matching_Text"] === countryCode){
             let [longitude, latitude] = countryData.center;
 
             setCoordinates([latitude, longitude]);
@@ -68,7 +68,7 @@ const Country = () => {
             const keys = Object.keys(country.name.nativeName || {})
             const bordersArray = country.borders
 
-            const newBordersArray = bordersArray.map((border) => {
+            const newBordersArray = bordersArray?.map((border) => {
 
               const matchingCountry = countries.find((country) => country.cca3 === border);
               if (matchingCountry) {

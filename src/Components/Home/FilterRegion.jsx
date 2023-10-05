@@ -15,7 +15,7 @@ const FilterRegion = () => {
       target = target.parentElement
     }
 
-    if (target.classList.contains('filter-button')){
+    if (target?.classList.contains('filter-button')){
       setDropDownState(!dropdownState)
 
     }
