@@ -8,9 +8,9 @@ const SkeletonElement = ({ type }) => {
     const { URL, searchCountryResults, region, countryCode, setCountryCode, countriesLimit, filterCountryResults, setFilterCountryResults } = useGlobalContext()
     const classes = `skeleton ${type}`
     return (
-        <div className="skeleton-wrapper">
-            <div className={classes}></div>
-        </div>
+
+        <div className={classes}></div>
+        
     )
 }
 
