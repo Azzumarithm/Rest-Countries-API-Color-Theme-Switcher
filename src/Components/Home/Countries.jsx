@@ -26,8 +26,7 @@ const Countries = () => {
     }
 
     useEffect(() => {
-        // This effect will re-run whenever countriesLimit changes
-        // You can put your skeleton element rendering logic here
+    
       }, [countriesLimit]);
 
 
