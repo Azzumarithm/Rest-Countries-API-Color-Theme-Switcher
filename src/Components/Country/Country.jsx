@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react'
 import { useGlobalContext } from '../Context/Context'
 import '../../App.css'
-import backIcon from '../../assets/images/back.png'
+
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 
 import axios from "axios"
 const apiToken = import.meta.env.VITE_REACT_MAP_TOKEN
 
 const Country = () => {
-  const { countryCode, setCountryCode, countries, setCountries, region, coordinates, setCoordinates,countryShortCode, setCountryShortCode } = useGlobalContext()
+  const { countryCode, setCountryCode, countries, setCountries, region, coordinates, setCoordinates, countryShortCode, setCountryShortCode, theme } = useGlobalContext()
   const [latitude, longitude] = coordinates
-  
+
   const handleBackToHome = (e) => {
     setCountryCode(null)
   }
-  
+
   const handleBordersClick = (e) => {
     let target = e.target
     while (target && !target.classList.contains('country-border-btn')) {
@@ -33,15 +33,15 @@ const Country = () => {
         );
 
         const data = response.data;
-        console.log(data)
+        
         const countriesData = data.features
-        for (let countryData of countriesData){
+        for (let countryData of countriesData) {
           let apiShortCode = countryData["properties"]["short_code"]
-          if (apiShortCode === countryShortCode.toLowerCase() || countryData["Matching_Text"] === countryCode){
+          if (apiShortCode === countryShortCode.toLowerCase() || countryData["Matching_Text"] === countryCode) {
             let [longitude, latitude] = countryData.center;
 
             setCoordinates([latitude, longitude]);
-            console.log({latitude, longitude})
+            
 
           }
         }
@@ -53,13 +53,21 @@ const Country = () => {
     geoCodeCountry()
   }, [countryCode])
 
-  
+
   return (
     <>
 
       <div className={`country-page-container`}>
         <button className="back-btn" onClick={handleBackToHome}>
-          <img src={backIcon} className="back-icon" alt="back-icon" />Back</button>
+          <svg fill={theme === 'Dark' ? `#ffffff` : `#000000`} height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns: xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 511.999 511.999" xml: space="preserve">
+            <g>
+              <g>
+                <polygon points="511.999,145.102 470.412,145.102 470.412,235.206 79.606,235.206 200.941,113.871 171.535,84.465 0,255.999 
+			171.535,427.533 200.941,398.128 79.606,276.792 511.999,276.792 		"/>
+              </g>
+            </g>
+          </svg>Back</button>
         {
           countries.filter((country) => {
             return country.cca3 === countryCode
@@ -76,8 +84,8 @@ const Country = () => {
               }
             })
 
-            console.log(newBordersArray)
             
+
             return (
               <>
                 <div key={country.cca3} className={`country-page-subcontainer ${country.cca3}`}>
@@ -123,7 +131,7 @@ const Country = () => {
                 </div>
 
                 {latitude !== 0 && longitude !== 0 && (
-                  <MapContainer  key={`${latitude}-${longitude}`} center={[latitude, longitude]} zoom={5} scrollWheelZoom={true}>
+                  <MapContainer key={`${latitude}-${longitude}`} center={[latitude, longitude]} zoom={5} scrollWheelZoom={true}>
                     <TileLayer
                       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

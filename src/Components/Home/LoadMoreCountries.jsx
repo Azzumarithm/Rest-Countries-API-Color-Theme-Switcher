@@ -5,7 +5,7 @@ import '../../App.css'
 
 const LoadMoreCountries = () => {
 
-    const {countries,setCountries, searchCountryResults, setSearchCountryResults, countriesLimit, setCountriesLimit,region} = useGlobalContext()
+    const {countries,setCountries, searchCountryResults, setSearchCountryResults, countriesLimit, setCountriesLimit,region,theme} = useGlobalContext()
 
     const handleLoadMoreClick = (e) => {
         setCountriesLimit((prevState) => {

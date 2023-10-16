@@ -30,20 +30,21 @@ const Countries = () => {
         // You can put your skeleton element rendering logic here
       }, [countriesLimit]);
 
+
     return (
         <>
 
             <div className={'countries-container'} onClick={handleSelectCountry}>
-                {console.log(isLoading)}
+                
                 {!isLoading && searchCountryResults?.filter((country) => {
                     if (region === null || region === "All") {
                         return country
                     }
 
                     return country.region === region
-                }).slice(0, countriesLimit).map((country) => {
+                }).slice(0, countriesLimit).map((country,index) => {
                     return (
-                        <div key={country.flag} className={`country-subcontainer ${country.cca3} ${country.cca2}`}>
+                        <div key={index}className={`country-subcontainer ${country.cca3} ${country.cca2}`}>
                             <img src={country.flags.png} className={`country-image ${country.cca3}`} alt={`country-image ${country.cca3}`} />
                             <div className="country-descriptions">
                                 <h2 className={`country-name`}>{country.name.common}</h2>

@@ -31,8 +31,6 @@ export const useFetchCountries = () => {
             setCountries(countries);
 
 
-            console.table(countries)
-
           } catch (error) {
 
             setIsError(true);
