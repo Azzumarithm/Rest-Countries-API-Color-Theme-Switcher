@@ -1,5 +1,6 @@
-REST Countries API with color theme switcher
-Website Link:
+# REST Countries API with color theme switcher
+
+## Website Link:
 https://rest-countriesapicolorthemeswitch-map.netlify.app/
 
 ## Description:
