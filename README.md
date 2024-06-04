@@ -6,6 +6,10 @@ https://rest-countriesapicolorthemeswitch-map.netlify.app/
 ## Description:
 A "Where In The World?" is a web application that provides information about countries around the world by leveraging the REST Countries API. This API serves as a comprehensive source for country-related data such as population, capital, region, languages, currencies, and more. 
 
+## Dependencies:
+React, MapBox API, Rest Countries API, Axios
+
+
 ## Features:
 1. See all countries from the API on the homepage
 2. Search for a country using an input field
