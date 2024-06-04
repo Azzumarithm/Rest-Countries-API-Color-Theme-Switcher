@@ -5,24 +5,30 @@ import lightSearchIcon from '../../assets/images/search-icon-light.svg'
 
 const SearchCountry = () => {
 
-  const {countries,setSearchCountryResults,theme} = useGlobalContext()
+  const {countries,setSearchCountryResults,theme,isError} = useGlobalContext()
   
-  // const lightSearchIconStyle = {
-  //   backgroundImage: `url(${lightSearchIcon})`,
-  //   backgroundRepeat: 'no-repeat',
-  //   backgroundPosition: '7% center',
-  //   backgroundSize: '20px 20px',
-  // };
-  
-
   const handleSearchChange = (e) => {
     if (!e.target.value) return setSearchCountryResults(countries)
 
-    const countryResultsArray = countries.filter(country => {
-      return country.name.common.toLowerCase().includes(e.target.value) || country.name.common.includes(e.target.value) || country.name.common.toUpperCase().includes(e.target.value)
+    if (isError){
+      const countryResultsArray = countries.filter(country => {
+        return country.name.toLowerCase().includes(e.target.value) || country.name.includes(e.target.value) || country.name.toUpperCase().includes(e.target.value)
+        
+      })
+  
+      setSearchCountryResults(countryResultsArray)
+    }
+    else {
+      const countryResultsArray = countries.filter(country => {
+        return country.name.common.toLowerCase().includes(e.target.value) || country.name.common.includes(e.target.value) || country.name.common.toUpperCase().includes(e.target.value)
+        
+      })
+  
+      setSearchCountryResults(countryResultsArray)
       
-    })
-    setSearchCountryResults(countryResultsArray)
+    }
+
+    
   }
   
   return (

@@ -19,6 +19,8 @@ export const useGlobalContext = () => {
 
 
 const Context = ({ children }) => {
+
+
   const [isLoading, setIsLoading] = useState(true);
 
   const [isError, setIsError] = useState(false);

@@ -1,10 +1,16 @@
 import { useEffect } from "react";
 import { useGlobalContext } from "../Context/Context";
 import axios from "axios"
+import data from "../../../data.json"
+
+
 
 export const useFetchCountries = () => {
 
+    
     const {isLoading,setIsLoading,isError,setIsError,countries,setCountries,URL} = useGlobalContext()
+
+    
 
     useEffect(() => {
 
@@ -26,7 +32,9 @@ export const useFetchCountries = () => {
 
             }
 
+
             const countries = await resp.data;
+            // const countries = data
 
             setCountries(countries);
 
@@ -34,6 +42,11 @@ export const useFetchCountries = () => {
           } catch (error) {
 
             setIsError(true);
+
+            const countries = data
+
+
+            setCountries(countries);
 
             // console.log(error);
 

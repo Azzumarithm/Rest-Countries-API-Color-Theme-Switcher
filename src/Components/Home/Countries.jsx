@@ -10,7 +10,7 @@ import SkeletonCountries from './SkeletonCountries'
 
 const Countries = () => {
 
-    const { URL, searchCountryResults, region, countryCode, setCountryCode, countriesLimit, filterCountryResults, setFilterCountryResults, countryShortCode, setCountryShortCode } = useGlobalContext()
+    const { URL, searchCountryResults, region, countryCode, setCountryCode, countriesLimit, filterCountryResults, setFilterCountryResults, countryShortCode, setCountryShortCode} = useGlobalContext()
 
     const { isLoading, isError } = useFetchCountries(URL)
     
@@ -20,14 +20,16 @@ const Countries = () => {
             target = target.parentElement
         }
 
+        console.log(target.classList[1])
+        console.log(target.classList[2].toLowerCase())
+
         setCountryCode(target.classList[1])
         setCountryShortCode(target.classList[2].toLowerCase())
 
     }
 
     useEffect(() => {
-        // This effect will re-run whenever countriesLimit changes
-        // You can put your skeleton element rendering logic here
+        
       }, [countriesLimit]);
 
 
@@ -44,10 +46,10 @@ const Countries = () => {
                     return country.region === region
                 }).slice(0, countriesLimit).map((country,index) => {
                     return (
-                        <div key={index}className={`country-subcontainer ${country.cca3} ${country.cca2}`}>
-                            <img src={country.flags.png} className={`country-image ${country.cca3}`} alt={`country-image ${country.cca3}`} />
+                        <div key={index}className={`country-subcontainer ${country.cca3 || country.alpha3Code} ${country.cca2 || country.alpha2Code}`}>
+                            <img src={country.flags.png} className={`country-image ${country.cca3 || country.alpha3Code}`} alt={`country-image ${country.cca3 || country.alpha3Code}`} />
                             <div className="country-descriptions">
-                                <h2 className={`country-name`}>{country.name.common}</h2>
+                                <h2 className={`country-name`}>{country.name.common || country.name}</h2>
                                 <p className={`country-description country-population`}>
                                     <strong>Population</strong> : {`${country.population.toLocaleString()}`}
                                 </p>
