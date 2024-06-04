@@ -17,4 +17,9 @@ React, Rest Countries API, MapBox API Axios
 4. Click on a country to see more detailed information on a separate page
 5. Click through to the border countries on the detail page
 6. View the optimal layout for the interface depending on their device's screen size
+<<<<<<< HEAD
 7. See hover and focus states for all interactive elements on the page
+=======
+7. See hover and focus states for all interactive elements on the page
+
+>>>>>>> origin/master

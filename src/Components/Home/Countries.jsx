@@ -29,7 +29,6 @@ const Countries = () => {
     }
 
     useEffect(() => {
-        
       }, [countriesLimit]);
 
 
