@@ -8,11 +8,12 @@ import axios from "axios"
 const apiToken = import.meta.env.VITE_REACT_MAP_TOKEN
 
 const Country = () => {
-  const { countryCode, setCountryCode, countries, setCountries, region, coordinates, setCoordinates, countryShortCode, setCountryShortCode, theme,isError } = useGlobalContext()
+  const { countryCode, setCountryCode, setSearchCountryResults,countries, setCountries, region, coordinates, setCoordinates, countryShortCode, setCountryShortCode, theme,isError } = useGlobalContext()
   const [latitude, longitude] = coordinates
 
   const handleBackToHome = (e) => {
     setCountryCode(null)
+    setSearchCountryResults(countries)
   }
 
   const handleBordersClick = (e) => {
@@ -20,6 +21,8 @@ const Country = () => {
     while (target && !target.classList.contains('country-border-btn')) {
       target = target.parentElement
     }
+
+    
 
     setCountryCode(e.target.textContent)
     setCountryShortCode(target.classList[1])
@@ -81,7 +84,7 @@ const Country = () => {
 
               const matchingCountry = countries.find((country) => country.cca3 === border || country.alpha3Code === border);
               if (matchingCountry) {
-                return [border, matchingCountry.cca2] || [border, matchingCountry.alpha2Code];
+                return [border, matchingCountry.cca2 || matchingCountry.alpha2Code] 
               }
             })
 
@@ -132,6 +135,7 @@ const Country = () => {
                       <p><strong>Border Countries:</strong></p>
                       <div className="country-border-btn-container">
                         {newBordersArray?.map((border) => {
+                          // console.log(border)
                           return (
                             <button key={border[0]} className={`country-border-btn ${border[1]}`} onClick={handleBordersClick}>{border[0]}</button>
                           )

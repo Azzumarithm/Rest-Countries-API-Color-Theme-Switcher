@@ -20,7 +20,7 @@ export const useFetchCountries = () => {
 
             const resp = await axios(URL);
 
-            // console.log(resp);
+            console.log(resp);
 
             if (resp.status !== 200) {
 
@@ -31,13 +31,11 @@ export const useFetchCountries = () => {
               return;
 
             }
-
+            
 
             const countries = await resp.data;
             // const countries = data
-
             setCountries(countries);
-
 
           } catch (error) {
 
@@ -47,6 +45,9 @@ export const useFetchCountries = () => {
 
 
             setCountries(countries);
+
+            
+
 
             // console.log(error);
 

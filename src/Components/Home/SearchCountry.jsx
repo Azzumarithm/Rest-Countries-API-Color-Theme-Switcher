@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "../../App.css"
 import { useGlobalContext } from '../Context/Context'
 import lightSearchIcon from '../../assets/images/search-icon-light.svg'
@@ -7,8 +7,11 @@ const SearchCountry = () => {
 
   const {countries,setSearchCountryResults,theme,isError} = useGlobalContext()
   
+  
   const handleSearchChange = (e) => {
+    
     if (!e.target.value) return setSearchCountryResults(countries)
+
 
     if (isError){
       const countryResultsArray = countries.filter(country => {
