@@ -1,13 +1,13 @@
 # REST Countries API with color theme switcher
 
 ## Website Link:
-https://rest-countriesapicolorthemeswitch-map.netlify.app/
+https://whereintheworldbyazzumarithm.netlify.app/
 
 ## Description:
 A "Where In The World?" is a web application that provides information about countries around the world by leveraging the REST Countries API. This API serves as a comprehensive source for country-related data such as population, capital, region, languages, currencies, and more. 
 
 ## Dependencies:
-React, Rest Countries API, MapBox API Axios
+React, Rest Countries API, MapBox API, Axios, React Leaflet API
 
 
 ## Features:
